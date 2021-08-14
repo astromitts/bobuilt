@@ -11,6 +11,7 @@ SECRET_KEY = os.environ['PRODUCTION_KEY']
 
 DEBUG = True
 MIDDLEWARE_DEBUG = False
+STATICFILES_DIRS = None
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
