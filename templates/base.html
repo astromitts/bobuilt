@@ -16,11 +16,9 @@
 
   		<link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   		{% block extra_style %}{% endblock %}
-  		{% comment %}
   		<link href="{% static 'app.css' %}" rel="stylesheet">
-  		{% endcomment %}
   		<title>
-  			BRAND{% block page_title %}{% endblock %}
+  			Bo built{% block page_title %}{% endblock %}
   		</title>
   		{% comment %}
   		<link rel="shortcut icon" type="/image/png" href="{% static 'site_images/favicon.ico' %}"/>
@@ -30,23 +28,15 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container">
 			  <a class="navbar-brand" href="">
-			  	{% comment %}<img src="{% static 'site_images/crown.png' %}" />{% endcomment %}
-			  	BRAND
+			  	<img class="navbar-logo" src="{% static 'images/bobuilt-logo.png' %}" alt="Bo built" />
 			  </a>
 				<div>
 			    <ul class="navbar-nav">			
-					{% if user.is_authenticated %}		
+					{% for page in PAGES %}					
 						<li class="nav-item">
-						  <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
-						</li>			
-					{% else %}				
-						<li class="nav-item">
-						  <a class="nav-link" href="{% url 'login' %}">Log In</a>
-						</li>			
-						<li class="nav-item">
-						  <a class="nav-link" href="{% url 'register' %}">Register</a>
+						  <a class="nav-link" href="{% url 'portfolio_page' page_slug=page.slug %}">{{page.title}}</a>
 						</li>
-					{% endif %}
+					{% endfor %}
 			    </ul>
 				</div>
 			</div>
@@ -85,16 +75,13 @@
 	<nav class="navbar navbar-light bg-light">
 		<div class="container">
 			<div class="col-lg-4 col-sm-12">
-					BRAND © 2021 Copyright 
+					Bobuilt.me © 2021 Copyright 
 			</div>
 			<div class="col-lg-8 col-sm-12">
 				<a href="">About</a> |
 				<a href="{% url 'privacy_policy' %}">Privacy Policy</a> |
 				<a href="{% url 'eula' %}">End User License Agreement</a> |
 				<a href="">Contact</a>
-			</div>
-			<div class="col-lg-12 col-sm-12">
-				Do you need a disclaimer? Put it here.
 			</div>
 		</div>
 	</nav>

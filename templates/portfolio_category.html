@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_content %}
+<div class="row">
+	<div class="col"><h1>{{category.title}}</h1></div>
+</div>
+<div class="row">
+	<div class="col">{{category.description|safe}}</div>
+</div>
+<div class="row">
+	{% if category.portfolioitem_set.count > 0 %}
+		{% for item in category.portfolioitem_set.all %}
+		<div class="col-3">
+			<div class="card">
+				<img class="portfolio-image" src="/static/portfolio_images{{item.image.url}}" />
+				<p>{{item.title}}</p>
+				<p>Created: {{item.date_created}}</p>
+			</div>
+		</div>
+		{% endfor %}
+	{% else %}
+	<div class="col alert">
+		Looks like I am still loading content for this page. Come back soon!</div>
+	{% endif %}
+</div>
+{% endblock %}

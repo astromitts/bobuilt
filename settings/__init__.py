@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django_summernote',
     'rest_framework',
     'appuser',
+    'portfolio',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'appuser.context_processor.context_processor',
             ],
         },
     },
@@ -170,5 +172,7 @@ SITE_ADMIN_VIEWS = []
 AUTHENTICATION_REQUIRED_REDIRECT = 'login'
 LOGIN_SUCCESS_REDIRECT = 'home'
 # PW_RESET_SUCCESS_REDIRECT = 'dashboard'
-DEFAULT_ERROR_VIEW = 'error'
+DEFAULT_ERROR_VIEW = 'error.html'
 DEFAULT_FORBIDDEN_TEMPLATE = 'forbidden.html'
+
+MEDIA_ROOT = 'static/portfolio_images'
