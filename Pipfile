@@ -13,6 +13,7 @@ django-summernote = "*"
 django-cors-headers = "*"
 pillow = "*"
 gunicorn = "*"
+django-grappelli = "*"
 
 [dev-packages]
 

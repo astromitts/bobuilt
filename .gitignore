@@ -2,3 +2,4 @@ secrets/*
 prod-local.py
 *.DS_Store
 db.sqlite3
+static/portfolio_images/*

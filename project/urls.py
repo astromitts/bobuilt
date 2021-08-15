@@ -4,7 +4,8 @@ from django.views.generic import TemplateView
 from portfolio.views import PortfolioCategory
 
 urlpatterns = [
-    path('summernote/', include('django_summernote.urls')),
+    path('grappelli/', include('grappelli.urls')),  # grappelli URLS
+    path('summernote/', include('django_summernote.urls')),  # summernote URLS
     path('admin/', admin.site.urls),
     path('error/', TemplateView.as_view(template_name='error.html'), name='error'),
     path('', TemplateView.as_view(template_name='base.html'), name='home'),

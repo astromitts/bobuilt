@@ -14,8 +14,12 @@ class PortfolioItem(models.Model):
         max_length=10,
         help_text='String MM/YYYY if you know it'
     )
-    portfolio_page = models.ForeignKey(PortfolioPage, blank=True, null=True, on_delete=models.SET_NULL)
     image = models.ImageField()
+    portfolio_page = models.ForeignKey(PortfolioPage, blank=True, null=True, on_delete=models.SET_NULL)
+    order = models.IntegerField(default=0)
+
+    class Meta:
+        ordering = ('order', )
 
 
 class PortfolioGallery(models.Model):
