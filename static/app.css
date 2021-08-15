@@ -28,4 +28,9 @@ ul.errorlist li {
   font-weight: bold;
 }
 
+.btn-primary {
+  background-color: #2fa8db;
+  border-color: #096890;
+}
+
 /*# sourceMappingURL=app.css.map */
