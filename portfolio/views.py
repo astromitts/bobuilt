@@ -34,3 +34,6 @@ class Contact(View):
     def get(self, request, *args, **kwargs):
         self.context.update({'form': ContactForm()})
         return HttpResponse(self.template.render(self.context, request))
+
+    def post(self, request, *args, **kwargs):
+        form = ContactForm(request.POST)
