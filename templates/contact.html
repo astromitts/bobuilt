@@ -8,7 +8,14 @@
             {{form.as_p}}
             {% csrf_token %}
             {% if site_key %}
-            <div class="g-recaptcha" data-sitekey="{{site_key}}"></div>
+                {% if recaptcha_error %}
+                <p>
+                    <ul class="errorlist">
+                        <li>Please verify that you are a human</li>
+                    </ul>
+                </p>
+                {% endif %}
+                <div class="g-recaptcha" data-sitekey="{{site_key}}"></div>
             {% endif %}
             <p>
                 <input type="submit" class="btn btn-primary form-control" value="submit" />

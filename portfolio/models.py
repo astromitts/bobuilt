@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.timezone import now
 from datetime import datetime
 
 
@@ -39,3 +40,9 @@ class PortfolioGallery(models.Model):
 class Contact(models.Model):
     submitter_email = models.TextField()
     message = models.TextField()
+    submitted_at = models.DateTimeField(default=now)
+    responded_at = models.DateTimeField(blank=True, null=True)
+
+    @property
+    def responded(self):
+        return self.responded_at is not None

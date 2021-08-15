@@ -2,8 +2,21 @@ from django import forms
 from django.contrib import admin
 from grappelli.forms import GrappelliSortableHiddenMixin
 
-from portfolio.models import PortfolioPage, PortfolioItem
+from portfolio.models import Contact, PortfolioPage, PortfolioItem
 from django_summernote.admin import SummernoteModelAdmin
+
+
+class ContactAdminForm(forms.ModelForm):
+    model = Contact
+    fields = '_all__'
+
+
+@admin.register(Contact)
+class ContactAdmin(SummernoteModelAdmin):
+    form = ContactAdminForm
+    list_display = ['submitter_email', 'submitted_at', 'message', 'responded']
+    summernote_fields = ('message')
+    readonly_fields = ['submitter_email', 'submitted_at', ]
 
 
 class PortfolioItemInline(GrappelliSortableHiddenMixin, admin.StackedInline):

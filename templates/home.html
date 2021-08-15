@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block page_content %} 
+<div class="row">
+    <div class="col">
+        <div class="card" style="width: 380px; float: right">
+            <img class="card-img-top portfolio-image" src="/static/images/me.png" />
+            <div class="card-body">
+                <p class="card-text">
+                    <a href="{% url 'contact' %}" class="btn btn-primary form-control">Contact Me</a>
+                </p>
+            </div>
+        </div>
+        <h1>Hello!</h1>
+        <p>
+            Thanks for visiting my builder portfolio! My name is Bo and I live in Hyattsville, Maryland with my wife and three cats. I am transmasculine and use they/them pronouns.
+        </p>
+        <p>
+            During the day I am a web developer at a DC based media company, and during the weekends and evenings I am a hobby woodworker and builder.
+        </p>
+        <p>
+            I love using tools, creating and problem solving. This portfolio is a place for me to show off some of my projects and hopefully reach people who I can work with to keep on building.
+        </p>
+
+        <h2>Woodwork</h2>
+        <p>
+            I have experience building small to medium sized furniture (consoles, benches, side tables, vanities, etc) as well as sculptures like bandsaw boxes, toys, and hand tools such as joinery mallets.
+        </p>
+        <h2>Construction</h2>
+        <p>I have experience doing basic plumbing fixes and electrical installations, as well as drywall repair, painting, hanging doors, casing & trim, and installing engineering hardwood floors.</p>
+
+        <h2>Web Development</h2>
+        <p>I have 10+ years of experience in web development, particularly Django/Python, Bootsrap, JQuery, and AngularJS. While I prefer to spend my freetime building physical things, I am also open to building web software.</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src='https://www.google.com/recaptcha/api.js'></script>
+   
+{% endblock %}

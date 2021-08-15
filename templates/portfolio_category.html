@@ -2,10 +2,16 @@
 {% load static %}
 
 {% block page_content %}
-<div class="jumbotron">
-	<h1 class="display-4">{{category.title}}</h1>
-	<hr class="my-4">
-	<p class="lead">{{category.description|safe}}</p>
+
+<div class="row">
+	<div class="col">
+		<div class="jumbotron">
+			<h1 class="display-4">{{category.title}}</h1>
+			<hr class="my-4">
+			<p class="lead">{{category.description|safe}}</p>
+		  </p>
+		</div>
+	</div>
 </div>
 <div class="row">
 	{% if category.portfolioitem_set.count > 0 %}
@@ -25,5 +31,14 @@
 	<div class="col alert">
 		Looks like I am still loading content for this page. Come back soon!</div>
 	{% endif %}
+</div>
+
+<div class="row">
+	<div class="col">
+		<div class="jumbotron" style="margin-top: 25px;">
+			<p class="lead">I'd love to create or build something for you! <a href="{% url 'contact' %}">Conact me</a> to get in touch!</p>
+		  </p>
+		</div>
+	</div>
 </div>
 {% endblock %}

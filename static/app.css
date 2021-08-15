@@ -19,4 +19,13 @@ a {
   padding: 25px 0px;
 }
 
+ul.errorlist {
+  list-style-type: none;
+  padding-left: 0;
+}
+ul.errorlist li {
+  color: #e22525;
+  font-weight: bold;
+}
+
 /*# sourceMappingURL=app.css.map */
