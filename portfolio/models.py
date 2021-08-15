@@ -34,3 +34,8 @@ class PortfolioItem(models.Model):
 class PortfolioGallery(models.Model):
     portfolio_item = models.ForeignKey(PortfolioItem, on_delete=models.CASCADE)
     image = models.ImageField()
+
+
+class Contact(models.Model):
+    submitter_email = models.TextField()
+    message = models.TextField()
