@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 
 class PortfolioPage(models.Model):
@@ -20,6 +21,14 @@ class PortfolioItem(models.Model):
 
     class Meta:
         ordering = ('order', )
+
+    @property
+    def display_date(self):
+        if self.date_created.startswith('??'):
+            return self.date_created[-4:]
+        else:
+            date_created_date = datetime.strptime(self.date_created, '%M/%Y')
+            return date_created_date.strftime('%B %Y')
 
 
 class PortfolioGallery(models.Model):
