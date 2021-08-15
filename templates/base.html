@@ -3,8 +3,8 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<meta charset="utf-8">
-		<meta name="description" content="">
-		<meta name="keywords" content="">		
+		<meta name="description" content="Bo Morin is a queer, transmasculine hobby woodworker and builder located in Hyattsville, Maryland. Check out their work on this portfolio page and contact them for commissions.">
+		<meta name="keywords" content="hobby woodwork portfolio, hobby woodworking, hobby construction, handyman hyattsville, queer woodworker, lgbtq+ woodworker, trans woodworker">		
 		<meta name="author" content="Bo Morin">
 		
 		{% comment %}
@@ -18,11 +18,11 @@
   		{% block extra_style %}{% endblock %}
   		<link href="{% static 'app.css' %}" rel="stylesheet">
   		<title>
-  			Bo built{% block page_title %}{% endblock %}
+  			Bo built{% if page_title %} | {{page_title}}{% endif %}
   		</title>
-  		{% comment %}
-  		<link rel="shortcut icon" type="/image/png" href="{% static 'site_images/favicon.ico' %}"/>
-  		{% endcomment %}
+
+  		<link rel="shortcut icon" type="/image/png" href="{% static 'images/b-favicon.ico' %}"/>
+
   </head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">

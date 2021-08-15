@@ -15,6 +15,7 @@ class PortfolioCategory(PortfolioBase):
     def get(self, request, *args, **kwargs):
         template = loader.get_template('portfolio_category.html')
         context = {
-            'category': self.portfolio_page
+            'category': self.portfolio_page,
+            'page_title': self.portfolio_page.title
         }
         return HttpResponse(template.render(context, request))

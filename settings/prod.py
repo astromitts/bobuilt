@@ -14,4 +14,4 @@ MIDDLEWARE_DEBUG = False
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-ALLOWED_HOSTS = ['bobuilt.herokuapp.com', 'bobuilt.herokuapp.com']
+ALLOWED_HOSTS = ['bobuilt.herokuapp.com', 'bobuilt.herokuapp.com', 'www.bobuilt.me']
