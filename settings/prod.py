@@ -17,3 +17,5 @@ MIDDLEWARE_DEBUG = False
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ALLOWED_HOSTS = ['bobuilt.herokuapp.com', 'bobuilt.herokuapp.com', 'www.bobuilt.me']
+
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE_CONTENTS = os.environ['GOOGLE_DRIVE_JSON']

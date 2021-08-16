@@ -1,6 +1,9 @@
 from django.db import models
 from django.utils.timezone import now
 from datetime import datetime
+from gdstorage.storage import GoogleDriveStorage
+
+gd_storage = GoogleDriveStorage()
 
 
 class PortfolioPage(models.Model):
@@ -52,7 +55,7 @@ class Gallery(models.Model):
 
 class GalleryImage(models.Model):
     gallery = models.ForeignKey(Gallery, blank=True, null=True, on_delete=models.SET_NULL)
-    image = models.ImageField()
+    image = models.ImageField(storage=gd_storage)
     is_primary = models.BooleanField(default=False)
     is_thumbnail = models.BooleanField(default=False)
     order = models.IntegerField(default=0)

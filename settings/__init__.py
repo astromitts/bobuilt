@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'django_summernote',
+    'gdstorage',
     'rest_framework',
     'appuser',
     'portfolio',
@@ -174,3 +175,6 @@ DEFAULT_ERROR_VIEW = 'error.html'
 DEFAULT_FORBIDDEN_TEMPLATE = 'forbidden.html'
 
 MEDIA_ROOT = 'static/portfolio_images'
+
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = None
+GOOGLE_DRIVE_STORAGE_MEDIA_ROOT = 'bobuilt'
