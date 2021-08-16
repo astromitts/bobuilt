@@ -1,6 +1,8 @@
 import os
 from settings import *  # noqa
 import dj_database_url
+import subprocess
+
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
@@ -20,7 +22,7 @@ ALLOWED_HOSTS = ['bobuilt.herokuapp.com', 'bobuilt.herokuapp.com', 'www.bobuilt.
 with open('google-credentials.json', 'w+') as file:
     file.write(os.environ['GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE_CONTENTS'])
 
-os.chmod('google-credentials.json', 0666)
+subprocess.call(['chmod', '0444', 'google-credentials.json'])
 
 os.environ['GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE'] = 'google-credentials.json'
 GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.environ['GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE']
