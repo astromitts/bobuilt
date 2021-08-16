@@ -20,3 +20,4 @@ DATABASES = {
         'PASSWORD': '',
     }
 }
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = 'google-credentials.json'

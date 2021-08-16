@@ -69,6 +69,8 @@ class GalleryImage(models.Model):
     is_primary = models.BooleanField(default=False)
     is_thumbnail = models.BooleanField(default=False)
     order = models.IntegerField(default=0)
+    alt = models.CharField(max_length=250, default='Portfolio Image')
+    description = models.TextField(blank=True, null=True)
 
     class Meta:
         ordering = ('order', )
