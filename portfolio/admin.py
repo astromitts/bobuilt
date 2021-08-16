@@ -7,7 +7,8 @@ from portfolio.models import (
     Gallery,
     GalleryImage,
     PortfolioPage,
-    PortfolioItem
+    PortfolioItem,
+    Google
 )
 
 from django_summernote.admin import SummernoteModelAdmin
@@ -73,3 +74,13 @@ class GalleryAdmin(admin.ModelAdmin):
     form = GalleryForm
     inlines = [GalleryImageInline, ]
     list_display = ['name', 'portfolio_item']
+
+
+class GoogleAdminForm(forms.ModelForm):
+    model = Google
+    fields = '__all__'
+
+
+@admin.register(Google)
+class GoogleAdmin(admin.ModelAdmin):
+    form = GoogleAdminForm
