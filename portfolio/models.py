@@ -6,10 +6,6 @@ from gdstorage.storage import GoogleDriveStorage
 gd_storage = GoogleDriveStorage()
 
 
-class Google(models.Model):
-    credentials = models.FileField()
-
-
 class PortfolioPage(models.Model):
     slug = models.CharField(max_length=100, primary_key=True)
     title = models.CharField(max_length=100)
