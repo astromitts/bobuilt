@@ -10,18 +10,24 @@ class PortfolioPage(models.Model):
 
 
 class PortfolioItem(models.Model):
-    title = models.CharField(max_length=250)
+    title = models.CharField(max_length=250, unique=True)
     description = models.TextField()
     date_created = models.CharField(
         max_length=10,
         help_text='String MM/YYYY if you know it'
     )
-    image = models.ImageField()
     portfolio_page = models.ForeignKey(PortfolioPage, blank=True, null=True, on_delete=models.SET_NULL)
     order = models.IntegerField(default=0)
 
     class Meta:
         ordering = ('order', )
+
+    def __str__(self):
+        return self.title
+
+    @property
+    def gallery(self):
+        return self.gallery_set.first()
 
     @property
     def display_date(self):
@@ -32,9 +38,27 @@ class PortfolioItem(models.Model):
             return date_created_date.strftime('%B %Y')
 
 
-class PortfolioGallery(models.Model):
-    portfolio_item = models.ForeignKey(PortfolioItem, on_delete=models.CASCADE)
+class Gallery(models.Model):
+    name = models.CharField(max_length=150)
+    portfolio_item = models.ForeignKey(PortfolioItem, blank=True, null=True, on_delete=models.SET_NULL)
+
+    @property
+    def thumbnail(self):
+        tn = self.galleryimage_set.filter(is_thumbnail=True).first()
+        if tn:
+            return tn.image
+        return None
+
+
+class GalleryImage(models.Model):
+    gallery = models.ForeignKey(Gallery, blank=True, null=True, on_delete=models.SET_NULL)
     image = models.ImageField()
+    is_primary = models.BooleanField(default=False)
+    is_thumbnail = models.BooleanField(default=False)
+    order = models.IntegerField(default=0)
+
+    class Meta:
+        ordering = ('order', )
 
 
 class Contact(models.Model):

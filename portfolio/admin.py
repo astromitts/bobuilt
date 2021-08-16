@@ -2,7 +2,14 @@ from django import forms
 from django.contrib import admin
 from grappelli.forms import GrappelliSortableHiddenMixin
 
-from portfolio.models import Contact, PortfolioPage, PortfolioItem
+from portfolio.models import (
+    Contact,
+    Gallery,
+    GalleryImage,
+    PortfolioPage,
+    PortfolioItem
+)
+
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -48,3 +55,21 @@ class PortfolioItemAdmin(SummernoteModelAdmin):
     form = PortfolioItemForm
     list_display = ['title']
     summernote_fields = ('description')
+
+
+class GalleryImageInline(GrappelliSortableHiddenMixin, admin.StackedInline):
+    model = GalleryImage
+    sortable_field_name = 'order'
+    extra = 0
+
+
+class GalleryForm(forms.ModelForm):
+    model = Gallery
+    fields = '__all__'
+
+
+@admin.register(Gallery)
+class GalleryAdmin(admin.ModelAdmin):
+    form = GalleryForm
+    inlines = [GalleryImageInline, ]
+    list_display = ['name', 'portfolio_item']
