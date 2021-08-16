@@ -37,18 +37,19 @@
 						  	{% for image in images %}
 						  	{% if forloop.first %}
 						    <div class="carousel-item active" id="{{item.pk}}-{{image.pk}}">
-						      <img class="d-block w-100" src="{{image.image.url}}" alt="{{image.alt}}">
-						    </div>
 						    {% else %}
 						    <div class="carousel-item">
+						    {% endif %}
+						      <img class="d-block w-100" src="{{image.image.url}}" alt="{{image.alt}}">
+							    {% if image.description %}
+							    <div class="carousel-caption d-none d-md-block">
+								    <p>{{image.description}}</p>
+								 </div>
+								 {% endif %}
+						    </div>
 						      <img class="d-block w-100" src="{{image.image.url}}" alt="{{image.alt}}" id="{{item.pk}}-{{image.pk}}">
 						    </div>
 						    {% endif %}
-						    {% if image.description %}
-						    <div class="carousel-caption d-none d-md-block">
-							    <p>{{image.description}}</p>
-							 </div>
-							 {% endif %}
 
 						    {% endfor %}
 						  </div>
