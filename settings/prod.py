@@ -20,5 +20,7 @@ ALLOWED_HOSTS = ['bobuilt.herokuapp.com', 'bobuilt.herokuapp.com', 'www.bobuilt.
 with open('google-credentials.json', 'w+') as file:
     file.write(os.environ['GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE_CONTENTS'])
 
+os.chmod('google-credentials.json', 0666)
+
 os.environ['GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE'] = 'google-credentials.json'
 GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.environ['GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE']
