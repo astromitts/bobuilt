@@ -11,5 +11,5 @@ urlpatterns = [
     path('', Home.as_view(), name='home'),
     path('user/', include('appuser.urls')),
     path('contact/', ContactView.as_view(), name='contact'),
-    path('portfolio/<str:page_slug>/', PortfolioCategory.as_view(), name='portfolio_page')
+    path('<str:page_slug>/', PortfolioCategory.as_view(), name='portfolio_page')
 ]
