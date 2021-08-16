@@ -19,12 +19,8 @@ MIDDLEWARE_DEBUG = False
 
 ALLOWED_HOSTS = ['bobuilt.herokuapp.com', 'bobuilt.herokuapp.com', 'www.bobuilt.me']
 
-subprocess.call(['chmod', '0777', 'google-credentials.json'])
-
 with open('google-credentials.json', 'w+') as file:
     file.write(os.environ['GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE_CONTENTS'])
-
-subprocess.call(['chmod', '0444', 'google-credentials.json'])
 
 os.environ['GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE'] = 'google-credentials.json'
 GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.environ['GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE']
