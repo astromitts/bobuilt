@@ -15,12 +15,12 @@
 </div>
 <div class="row">
 	{% if category.portfolioitem_set.count > 0 %}
-		{% for item in category.portfolioitem_set.all %}
+		{% for item in category.gallery_set.all %}
 		<div class="col-4">
 			<div class="card">
-				{% with item.gallery.images as images %}
+				{% with gallery.images as images %}
 
-				{% with item.gallery.images.count as image_count %}
+				{% with gallery.images.count as image_count %}
 				{% if image_count > 1 %}
 					<div id="carousel_{{item.pk}}" class="carousel slide" data-ride="carousel" data-interval="false">
 						<ol class="carousel-indicators">
