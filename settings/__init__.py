@@ -176,5 +176,5 @@ DEFAULT_FORBIDDEN_TEMPLATE = 'forbidden.html'
 
 MEDIA_ROOT = 'static/portfolio_images'
 
-GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = 'static/portfolio_images/google-credentials.json'
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = 'google-credentials.json'
 GOOGLE_DRIVE_STORAGE_MEDIA_ROOT = 'bobuilt'
