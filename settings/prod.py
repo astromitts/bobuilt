@@ -2,6 +2,7 @@ import os
 from settings import *  # noqa
 import dj_database_url
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 SECRET_KEY = os.environ['PRODUCTION_KEY']
@@ -13,8 +14,6 @@ DATABASES['default'] = dj_database_url.config(default=os.environ['DATABASE_URL']
 
 DEBUG = True
 MIDDLEWARE_DEBUG = False
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ALLOWED_HOSTS = ['bobuilt.herokuapp.com', 'bobuilt.herokuapp.com', 'www.bobuilt.me']
 
