@@ -176,5 +176,5 @@ DEFAULT_FORBIDDEN_TEMPLATE = 'forbidden.html'
 
 MEDIA_ROOT = 'static/portfolio_images'
 
-GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = 'https://drive.google.com/file/d/13UQq-7gx_23oovr27NVutZkCY_bS24u3/view?usp=sharing'
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = None
 GOOGLE_DRIVE_STORAGE_MEDIA_ROOT = 'bobuilt'
