@@ -56,6 +56,10 @@ class Gallery(models.Model):
             return tn.image
         return None
 
+    @property
+    def images(self):
+        return self.galleryimage_set.exclude(is_thumbnail=True).order_by('order').all()
+
 
 class GalleryImage(models.Model):
     gallery = models.ForeignKey(Gallery, blank=True, null=True, on_delete=models.SET_NULL)

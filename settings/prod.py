@@ -1,7 +1,6 @@
 import os
 from settings import *  # noqa
 import dj_database_url
-import subprocess
 
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
