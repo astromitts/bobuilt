@@ -7,7 +7,6 @@ from portfolio.models import (
     Gallery,
     GalleryImage,
     PortfolioPage,
-    PortfolioItem,
 )
 
 from django_summernote.admin import SummernoteModelAdmin
@@ -38,18 +37,6 @@ class PortfolioPageAdmin(SummernoteModelAdmin):
     summernote_fields = ('description')
 
 
-class PortfolioItemForm(forms.ModelForm):
-    model = PortfolioItem
-    fields = '__all__'
-
-
-@admin.register(PortfolioItem)
-class PortfolioItemAdmin(SummernoteModelAdmin):
-    form = PortfolioItemForm
-    list_display = ['title']
-    summernote_fields = ('description')
-
-
 class GalleryImageInline(GrappelliSortableHiddenMixin, admin.StackedInline):
     model = GalleryImage
     sortable_field_name = 'order'
@@ -65,4 +52,5 @@ class GalleryForm(forms.ModelForm):
 class GalleryAdmin(admin.ModelAdmin):
     form = GalleryForm
     inlines = [GalleryImageInline, ]
-    list_display = ['name', 'portfolio_item']
+    list_display = ['name', 'portfolio_page']
+    list_editable = ['portfolio_page']

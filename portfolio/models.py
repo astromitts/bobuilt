@@ -12,34 +12,8 @@ class PortfolioPage(models.Model):
     description = models.TextField()
 
 
-class PortfolioItem(models.Model):
-    title = models.CharField(max_length=250, unique=True)
-    description = models.TextField()
-    date_created = models.CharField(
-        max_length=10,
-        help_text='String MM/YYYY if you know it'
-    )
-    portfolio_page = models.ForeignKey(PortfolioPage, blank=True, null=True, on_delete=models.SET_NULL)
-    order = models.IntegerField(default=0)
-
-    class Meta:
-        ordering = ('order', )
-
-    def __str__(self):
-        return self.title
-
-    @property
-    def display_date(self):
-        if self.date_created.startswith('??'):
-            return self.date_created[-4:]
-        else:
-            date_created_date = datetime.strptime(self.date_created, '%M/%Y')
-            return date_created_date.strftime('%B %Y')
-
-
 class Gallery(models.Model):
     name = models.CharField(max_length=150)
-    portfolio_item = models.ForeignKey(PortfolioItem, blank=True, null=True, on_delete=models.SET_NULL)
     title = models.CharField(max_length=250)
     description = models.TextField()
     date_created = models.CharField(
