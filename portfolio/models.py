@@ -60,7 +60,7 @@ class GalleryImage(models.Model):
         blank=True,
         null=True
     )
-    video = models.CharField(max_length=2000, blank=True, null=True)
+    video = models.TextField(blank=True, null=True)
     is_primary = models.BooleanField(default=False)
     is_thumbnail = models.BooleanField(default=False)
     order = models.IntegerField(default=0)

@@ -35,8 +35,11 @@
 						  	{% for image in images %}
 						  	{% if forloop.first %}
 						    <div class="carousel-item active" id="{{gallery.pk}}-{{image.pk}}">
+						    {% if image.video %}
+						    	{{image.video|safe}}
+						    {% else %}
 						      <img class="d-block w-100" src="{{image.image.url}}" alt="{{image.alt}}">
-
+						     {% endif %}
 							    {% if image.description %}
 							    <div class="carousel-caption d-none d-md-block">
 								    <p>{{image.description}}</p>
@@ -69,7 +72,11 @@
 						{% endwith %}
 					{% else %}
 						{% with gallery.galleryimage_set.first as image %}
-						<img class="card-img-top" src="{{image.image.url}}" alt="{{image.alt}}">
+						{% if image.video %}
+						    {{image.video|safe}}
+						{% else %}
+							<img class="card-img-top" src="{{image.image.url}}" alt="{{image.alt}}">
+						{% endif %}
 						{% endwith %}
 					{% endif %}
 				<div class="card-body">
