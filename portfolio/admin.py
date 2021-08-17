@@ -25,6 +25,12 @@ class ContactAdmin(SummernoteModelAdmin):
     readonly_fields = ['submitter_email', 'submitted_at', ]
 
 
+class GalleryInline(GrappelliSortableHiddenMixin, admin.StackedInline):
+    model = Gallery
+    sortable_field_name = 'order'
+    extra = 0
+
+
 class PortfolioPageForm(forms.ModelForm):
     model = PortfolioPage
     fields = '__all__'
@@ -35,6 +41,7 @@ class PortfolioPageAdmin(SummernoteModelAdmin):
     form = PortfolioPageForm
     list_display = ['slug', 'title']
     summernote_fields = ('description')
+    inlines = [GalleryInline, ]
 
 
 class GalleryImageInline(GrappelliSortableHiddenMixin, admin.StackedInline):
