@@ -14,7 +14,7 @@ def pdb(item, item2=None):
 def youtube_player(src):
     html = '''
     <iframe width="560" height="315"
-    src="http://www.youtube.com/embed/{}?autoplay=1&loop=1&playlist={}"
+    src="https://www.youtube.com/embed/{}?autoplay=1&loop=1&playlist={}"
     frameborder="0" allowfullscreen></iframe>
 
     '''
