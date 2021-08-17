@@ -49,6 +49,10 @@ class Gallery(models.Model):
         return None
 
     @property
+    def has_video(self):
+        return self.galleryimage_set.filter(youtubeid__isnull=False).count() > 0
+
+    @property
     def images(self):
         return self.galleryimage_set.exclude(is_thumbnail=True).order_by('order').all()
 
@@ -58,9 +62,9 @@ class GalleryImage(models.Model):
     image = models.ImageField(
         storage=gd_storage,
         blank=True,
-        null=True
+        default='https://drive.google.com/file/d/1QNxRZbReZ1X9-97N9liZfIhgMf3rc0FD/view?usp=sharing'
     )
-    video = models.TextField(blank=True, null=True)
+    youtubeid = models.CharField(max_length=30, blank=True, null=True)
     is_primary = models.BooleanField(default=False)
     is_thumbnail = models.BooleanField(default=False)
     order = models.IntegerField(default=0)
@@ -69,6 +73,12 @@ class GalleryImage(models.Model):
 
     class Meta:
         ordering = ('order', )
+
+    @property
+    def type(self):
+        if self.video:
+            return 'video'
+        return 'image'
 
 
 class Contact(models.Model):
