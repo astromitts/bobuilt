@@ -56,8 +56,11 @@ class Gallery(models.Model):
 class GalleryImage(models.Model):
     gallery = models.ForeignKey(Gallery, blank=True, null=True, on_delete=models.SET_NULL)
     image = models.ImageField(
-        storage=gd_storage
+        storage=gd_storage,
+        blank=True,
+        null=True
     )
+    video = models.CharField(max_length=2000, blank=True, null=True)
     is_primary = models.BooleanField(default=False)
     is_thumbnail = models.BooleanField(default=False)
     order = models.IntegerField(default=0)
