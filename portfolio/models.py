@@ -51,13 +51,6 @@ class Gallery(models.Model):
             return date_created_date.strftime('%B %Y')
 
     @property
-    def thumbnail(self):
-        tn = self.galleryimage_set.filter(is_thumbnail=True).first()
-        if tn:
-            return tn.image
-        return None
-
-    @property
     def has_video(self):
         return self.galleryimage_set.filter(youtubeid__isnull=False).count() > 0
 
@@ -74,8 +67,6 @@ class GalleryImage(models.Model):
         default='https://drive.google.com/file/d/1QNxRZbReZ1X9-97N9liZfIhgMf3rc0FD/view?usp=sharing'
     )
     youtubeid = models.CharField(max_length=30, blank=True, null=True)
-    is_primary = models.BooleanField(default=False)
-    is_thumbnail = models.BooleanField(default=False)
     order = models.IntegerField(default=0)
     alt = models.CharField(max_length=250, default='Portfolio Image')
     description = models.TextField(blank=True, null=True)
