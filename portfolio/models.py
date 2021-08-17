@@ -56,15 +56,17 @@ class Gallery(models.Model):
 
     @property
     def images(self):
-        return self.galleryimage_set.exclude(is_thumbnail=True).order_by('order').all()
+        return self.galleryimage_set.order_by('order').all()
 
 
 class GalleryImage(models.Model):
+    max_width = 600
+    max_height = 800
     gallery = models.ForeignKey(Gallery, blank=True, null=True, on_delete=models.SET_NULL)
     image = models.ImageField(
         storage=gd_storage,
         blank=True,
-        default='https://drive.google.com/file/d/1QNxRZbReZ1X9-97N9liZfIhgMf3rc0FD/view?usp=sharing'
+        null=True,
     )
     youtubeid = models.CharField(max_length=30, blank=True, null=True)
     order = models.IntegerField(default=0)
@@ -76,7 +78,7 @@ class GalleryImage(models.Model):
 
     @property
     def type(self):
-        if self.video:
+        if self.youtubeid:
             return 'video'
         return 'image'
 

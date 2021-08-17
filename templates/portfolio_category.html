@@ -42,7 +42,7 @@
 						    {% if image.youtubeid %}
 						    	{{image.youtubeid|youtube_player}}
 						    {% else %}
-						      <img class="d-block w-100" src="{{image.image.url}}" alt="{{image.alt}}">
+							      {% include 'includes/carousel-image.html' %}
 						     {% endif %}
 							    {% if image.description %}
 							    <div class="carousel-caption d-none d-md-block">
@@ -55,7 +55,7 @@
 						      {% if image.youtubeid %}
 							    	{{image.youtubeid|youtube_player}}
 							    {% else %}
-							      <img class="d-block w-100" src="{{image.image.url}}" alt="{{image.alt}}">
+							      {% include 'includes/carousel-image.html' %}
 							     {% endif %}
 
 							    {% if image.description %}
