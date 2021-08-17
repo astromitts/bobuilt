@@ -6,10 +6,19 @@ from gdstorage.storage import GoogleDriveStorage
 gd_storage = GoogleDriveStorage()
 
 
+class PortfolioManager(models.Model):
+    pass
+
+
 class PortfolioPage(models.Model):
     slug = models.CharField(max_length=100, primary_key=True)
     title = models.CharField(max_length=100)
     description = models.TextField()
+    order = models.IntegerField(default=0)
+    portfolio = models.ForeignKey(PortfolioManager, blank=True, null=True, on_delete=models.SET_NULL)
+
+    class Meta:
+        ordering = ('order', )
 
 
 class Gallery(models.Model):
