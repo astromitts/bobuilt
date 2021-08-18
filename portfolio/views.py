@@ -41,9 +41,22 @@ class PortfolioBase(View):
 class PortfolioCategory(PortfolioBase):
     def get(self, request, *args, **kwargs):
         template = loader.get_template('portfolio_category.html')
+        cols = [
+            [],
+            [],
+            []
+        ]
+        galleries = self.portfolio_page.gallery_set.order_by('order').all()
+
+        for i in range(0, len(galleries)):
+            gallery = galleries[i]
+            rail = i % 3
+            cols[rail].append(gallery)
+
         context = {
             'category': self.portfolio_page,
-            'page_title': self.portfolio_page.title
+            'page_title': self.portfolio_page.title,
+            'galleries': cols
         }
         return HttpResponse(template.render(context, request))
 

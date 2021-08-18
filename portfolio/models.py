@@ -39,10 +39,6 @@ class Gallery(models.Model):
         return self.title
 
     @property
-    def gallery(self):
-        return self.gallery_set.first()
-
-    @property
     def display_date(self):
         if self.date_created.startswith('??'):
             return self.date_created[-4:]

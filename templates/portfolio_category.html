@@ -15,89 +15,30 @@
 </div>
 <div class="row">
 	{% if category.gallery_set.count > 0 %}
-		{% for gallery in category.gallery_set.all %}
-		{% if gallery.has_video %}
-		<div class="col-sm-12 col-md-6">
-		{% else %}
-		<div class="col-sm-12 col-md-4">
-		{% endif %}
-			<div class="card">
-				{% if gallery.galleryimage_set.count > 1 %}
-					{% with gallery.galleryimage_set.all as images %}
-					<div id="carousel_{{gallery.pk}}" class="carousel slide" data-ride="carousel" data-interval="false">
-						<ol class="carousel-indicators">
+		{% for col in galleries %}
+			<div class="col-sm-12 col-md-4">
+			{% for gallery in col %}
 
-						  	{% for image in images %}
-						  	{% if forloop.first %}
-						      <li data-target="#{{gallery.pk}}-{{image.pk}}" data-slide-to="{{forloop.counter}}" class="active"></li>
-						      {% else %}
-						      <li data-target="#{{gallery.pk}}-{{image.pk}}" data-slide-to="{{forloop.counter}}"></li>
-						      {% endif %}
-						     {% endfor %}
-						    </ol>
-						  <div class="carousel-inner">
-						  	{% for image in images %}
-						  	{% if forloop.first %}
-						    <div class="carousel-item active" id="{{gallery.pk}}-{{image.pk}}">
-						    {% if image.youtubeid %}
-						    	{{image.youtubeid|youtube_player}}
-						    {% else %}
-							      {% include 'includes/carousel-image.html' %}
-						     {% endif %}
-							    {% if image.description %}
-							    <div class="carousel-caption d-none d-md-block">
-								    <p>{{image.description}}</p>
-								 </div>
-								 {% endif %}
-						    </div>
-						    {% else %}
-						    <div class="carousel-item">
-						      {% if image.youtubeid %}
-							    	{{image.youtubeid|youtube_player}}
-							    {% else %}
-							      {% include 'includes/carousel-image.html' %}
-							     {% endif %}
-
-							    {% if image.description %}
-							    <div class="carousel-caption d-none d-md-block">
-								    <p>{{image.description}}</p>
-								 </div>
-								 {% endif %}
-						    </div>
-						    {% endif %}
-
-						    {% endfor %}
-						  </div>
-						  <a class="carousel-control-prev" href="#carousel_{{gallery.pk}}" role="button" data-slide="prev">
-						    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						    <span class="sr-only">Previous</span>
-						  </a>
-						  <a class="carousel-control-next" href="#carousel_{{gallery.pk}}" role="button" data-slide="next">
-						    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-						    <span class="sr-only">Next</span>
-						  </a>
-						</div>
-						{% endwith %}
+				<div class="card">
+					{% if gallery.images.count > 1 %}
+						{% include 'includes/carousel.html' with images=gallery.images gallery=gallery %}
 					{% else %}
-						{% with gallery.galleryimage_set.first as image %}
-						{% if image.youtubeid %}
-						    {{image.youtubeid|youtube_player}}
-						{% else %}
-							<img class="card-img-top" src="{{image.image.url}}" alt="{{image.alt}}">
-						{% endif %}
-						{% endwith %}
+						{% include 'includes/card-image.html' %}
 					{% endif %}
-				<div class="card-body">
-					<h5 class="card-title">{{gallery.title}}</h5>
-					<h6 class="card-subtitle mb-2 text-muted">Created: {{gallery.display_date}}</h6>
-					<p class="card-text">{{gallery.description|safe}}</p>
+					<div class="card-body">
+						<h5 class="card-title">{{gallery.title}}</h5>
+						<h6 class="card-subtitle mb-2 text-muted">Created: {{gallery.display_date}}</h6>
+						<p class="card-text">{{gallery.description|safe}}</p>
+					</div>
 				</div>
+				<div class="spacer"></div>
+			{% endfor %}
 			</div>
-		</div>
 		{% endfor %}
 	{% else %}
-	<div class="col alert">
-		Looks like I am still loading content for this page. Come back soon!</div>
+		<div class="col alert">
+			Looks like I am still loading content for this page. Come back soon!
+		</div>
 	{% endif %}
 </div>
 

@@ -1,0 +1,8 @@
+{% load static helper_tags %}
+{% with gallery.galleryimage_set.first as image %}
+	{% if image.youtubeid %}
+	    {{image.youtubeid|youtube_player}}
+	{% else %}
+		<img class="card-img-top" src="{{image.image.url}}" alt="{{image.alt}}">
+	{% endif %}
+{% endwith %}

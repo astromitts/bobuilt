@@ -1,1 +1,11 @@
-<img class="d-block w-100 h-800" src="{{image.image.url}}" alt="{{image.alt}}">
+{% load static helper_tags %}
+{% if image.youtubeid %}
+	{{image.youtubeid|youtube_player}}
+{% else %}
+	<img class="d-block w-100 h-800" src="{{image.image.url}}" alt="{{image.alt}}">
+{% endif %}
+{% if image.description %}
+	<div class="carousel-caption d-none d-md-block">
+		<p>{{image.description}}</p>
+	</div>
+{% endif %}

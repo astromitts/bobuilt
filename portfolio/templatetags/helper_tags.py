@@ -13,7 +13,7 @@ def pdb(item, item2=None):
 @register.filter(name='youtube_player')
 def youtube_player(src):
     html = '''
-    <iframe width="560" height="315"
+    <iframe width="360" height="316"
     src="https://www.youtube.com/embed/{}?autoplay=1&loop=1&playlist={}"
     frameborder="0" allowfullscreen></iframe>
 
